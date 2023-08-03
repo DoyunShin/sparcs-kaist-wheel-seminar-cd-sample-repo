@@ -14,6 +14,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVKEY }}
           script: |
-            docker pull sparcs-cicd-test:latest
-            docker run --name cicd-test -p 3001:3001 sparcs-cicd-test:latest
-            docker rmi $(docker images -f "dangling=true" -q)
+            sudo docker pull sparcs-cicd-test:latest
+            sudo docker run --name cicd-test -p 3001:3001 sparcs-cicd-test:latest
+            sudo docker rmi $(docker images -f "dangling=true" -q)
