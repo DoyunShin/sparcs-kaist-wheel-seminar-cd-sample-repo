@@ -28,5 +28,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVKEY }}
           script: |
             sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/sparcs-cicd-test:latest
-            sudo docker run --name cicd-test -p 3001:3001 ${{ secrets.DOCKER_HUB_USERNAME }}/sparcs-cicd-test:latest -d
+            sudo docker run --name cicd-test -p 3001:3001 -d ${{ secrets.DOCKER_HUB_USERNAME }}/sparcs-cicd-test:latest
+            sudo docker logs cicd-test
             sudo docker rmi $(sudo docker images -f "dangling=true" -q)
