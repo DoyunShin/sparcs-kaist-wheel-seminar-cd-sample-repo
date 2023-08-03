@@ -29,4 +29,4 @@ jobs:
           script: |
             sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/sparcs-cicd-test:latest
             sudo docker run --name cicd-test -p 3001:3001 ${{ secrets.DOCKER_HUB_USERNAME }}/sparcs-cicd-test:latest -d
-            sudo docker rmi $(docker images -f "dangling=true" -q)
+            sudo docker rmi $(sudo docker images -f "dangling=true" -q)
