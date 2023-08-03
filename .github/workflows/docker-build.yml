@@ -29,5 +29,7 @@ jobs:
           script: |
             sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/sparcs-cicd-test:latest
             sudo docker run --name cicd-test -p 3001:3001 -d ${{ secrets.DOCKER_HUB_USERNAME }}/sparcs-cicd-test:latest
+            sleep 3
             sudo docker logs cicd-test
-            sudo docker rmi $(sudo docker images -f "dangling=true" -q)
+            sudo docker stop cicd-test
+            sudo docker rm cicd-test
