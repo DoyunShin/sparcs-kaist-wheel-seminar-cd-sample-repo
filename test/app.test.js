@@ -24,6 +24,18 @@ describe('GET /', () => {
 // });
 
 // IN-LAB TODO: test script for /health-check
+describe('GET /health-check', () => {
+  it('should return 200 OK', () => {
+    return request(app).get('/health-check')
+      .expect(200);
+  });
+});
 
 
 // TODO : test script for /assignment
+describe('GET /assignment', () => {
+  it('should return 404', () => {
+    return request(app).get('/assignment')
+      .expect(404);
+  });
+});
